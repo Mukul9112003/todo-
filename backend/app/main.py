@@ -5,7 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from pymongo.errors import PyMongoError
 from dotenv import load_dotenv
-from .app.database import client
+from .database import client
 from .routes import router
 load_dotenv()
 @asynccontextmanager
