@@ -15,3 +15,11 @@ class TaskResponse(BaseModel):
     description: str
     completed: bool
     created_at: datetime
+def serialize_task(document: dict) -> dict:
+    return {
+        "id": str(document["_id"]),
+        "title": document["title"],
+        "description": document.get("description", ""),
+        "completed": document.get("completed", False),
+        "created_at": document.get("created_at", datetime.now(timezone.utc)),
+    }
