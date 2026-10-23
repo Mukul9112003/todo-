@@ -18,6 +18,14 @@ app = FastAPI(
     version="1.0.0",
     lifespan=lifespan,
 )
+frontend_origin = os.getenv("FRONTEND_ORIGIN", "http://localhost:5173")
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[frontend_origin, "http://127.0.0.1:5173"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 app.include_router(router)
 @app.get("/")
 async def root():
