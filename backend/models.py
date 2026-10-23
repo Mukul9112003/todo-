@@ -5,3 +5,13 @@ from pydantic import BaseModel, Field, ConfigDict
 class TaskCreate(BaseModel):
     title: str = Field(min_length=1, max_length=120)
     description: str = Field(default="", max_length=500)
+class TaskUpdate(BaseModel):
+    completed: bool
+
+
+class TaskResponse(BaseModel):
+    id: str
+    title: str
+    description: str
+    completed: bool
+    created_at: datetime
